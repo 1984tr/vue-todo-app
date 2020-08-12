@@ -1,10 +1,15 @@
 const path = require("path");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
+require("@babel/polyfill");
 
 module.exports = {
   // 진입점 : 이 프로젝트에서 가장 먼저 실행되는 파일
   entry: {
-    app: path.join(__dirname, "main.js"), // 별칭 app
+    app: [
+      // 별칭 app
+      "@babel/polyfill",
+      path.join(__dirname, "main.js"),
+    ],
   },
   // 결과물에 대한 설정
   output: {
