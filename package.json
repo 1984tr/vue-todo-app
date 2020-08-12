@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/1984tr/vue-todo-app/issues"
   },
-  "homepage": "https://github.com/1984tr/vue-todo-app#readme"
+  "homepage": "https://github.com/1984tr/vue-todo-app#readme",
+  "devDependencies": {
+    "webpack": "^4.44.1"
+  }
 }
