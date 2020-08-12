@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/1984tr/vue-todo-app#readme",
   "devDependencies": {
-    "webpack": "^4.44.1"
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }
