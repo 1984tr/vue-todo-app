@@ -10,6 +10,8 @@ module.exports = {
         filename: '[name].js', // entry의 별칭이 설정됨
         path: path.join(__dirname, 'dist')
     },
-    module: '',
-    plugins: ''
+    module: {
+
+    },
+    plugins: []
 }
