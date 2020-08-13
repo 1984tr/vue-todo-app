@@ -1,19 +1,21 @@
 <template>
-  <h1 class="test">{{ msg }}</h1>
+  <h1 >{{ msg }}</h1>
 </template>
 
 <script>
 export default {
-  data() {
+  data: function () {
     return {
-      msg: "CPSs",
-    };
-  },
-};
+      msg: 'CPSssss'
+    }
+  }
+}
 </script>
 
-<style>
-.test {
-  color: blue;
+<style scoped lang="scss">
+$color: red;
+h1 {
+  font-size: 200px;
+  display: flex;
 }
 </style>
