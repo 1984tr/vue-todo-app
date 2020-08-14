@@ -1,29 +1,25 @@
 {
   "name": "vue-todo-app",
   "version": "1.0.0",
-  "description": "Vue todo app",
+  "description": "Vue Todo list app",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/1984tr/vue-todo-app.git"
+    "url": "https://github.com/HeropCode/Vue-Todo-app"
   },
   "main": "index.js",
-  "scripts": {
-    "build": "webpack --mode production",
-    "dev": "webpack-dev-server --mode development",
-    "lint": "eslint --ext .js,.vue .",
-    "lint:fix": "eslint --fix --ext .js,.vue ."
-  },
-  "keywords": [],
   "browserslist": [
     "last 2 versions",
     "ie >= 10"
   ],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/1984tr/vue-todo-app/issues"
+  "scripts": {
+    "dev": "webpack-dev-server --mode development",
+    "build": "webpack --mode production",
+    "lint": "eslint --ext .js,.vue .",
+    "lint:fix": "eslint --fix --ext .js,.vue ."
   },
-  "homepage": "https://github.com/1984tr/vue-todo-app#readme",
+  "keywords": [],
+  "author": "HEROPY",
+  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
@@ -53,7 +49,11 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.10.4",
-    "vue": "^2.6.11"
+    "@babel/polyfill": "^7.7.0",
+    "crypto-random-string": "^3.0.1",
+    "dayjs": "^1.8.17",
+    "lodash": "^4.17.15",
+    "lowdb": "^1.0.0",
+    "vue": "^2.6.10"
   }
 }

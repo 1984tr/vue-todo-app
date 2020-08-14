@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import TodoCreator from './components/TodoCreator'
-import TodoItem from './components/TodoItem'
+import TodoCreator from './TodoCreator'
+import TodoItem from './TodoItem'
 
 export default {
   components: {
@@ -16,3 +16,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+
+</style>
