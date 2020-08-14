@@ -4,7 +4,7 @@
   "description": "Vue Todo list app",
   "repository": {
     "type": "git",
-    "url": "https://github.com/HeropCode/Vue-Todo-app"
+    "url": "https://github.com/1984tr/vue-todo-app"
   },
   "main": "index.js",
   "browserslist": [
@@ -18,7 +18,7 @@
     "lint:fix": "eslint --fix --ext .js,.vue ."
   },
   "keywords": [],
-  "author": "HEROPY",
+  "author": "1984tr",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.6.4",
@@ -52,7 +52,7 @@
     "@babel/polyfill": "^7.7.0",
     "crypto-random-string": "^3.0.1",
     "dayjs": "^1.8.17",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.20",
     "lowdb": "^1.0.0",
     "vue": "^2.6.10"
   }
