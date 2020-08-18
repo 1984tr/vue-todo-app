@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.7.0",
-    "crypto-random-string": "^3.0.1",
+    "crypto-random-string": "^3.2.0",
     "dayjs": "^1.8.17",
     "lodash": "^4.17.20",
     "lowdb": "^1.0.0",
