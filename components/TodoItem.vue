@@ -1,6 +1,8 @@
 <template>
-  <div class="todo-item">
-
+  <div
+    :class="{ done }"
+    class="todo-item">
+    
     <div
       v-if="isEditMode"
       class="item__inner item-edit">
@@ -114,6 +116,19 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  
+<style scoped lang="scss">
+  .todo-item {
+    margin-bottom: 10px;
+    .item__inner {
+      display: flex;
+    }
+    .item__date {
+      font-size: 12px;
+    }
+    &.done {
+      .item__title {
+        text-decoration: line-through;
+      }
+    }
+  }
 </style>
