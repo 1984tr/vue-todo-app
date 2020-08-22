@@ -191,8 +191,5 @@ export default {
 </script>
 
 <style lang="scss">
-  button.active {
-    font-weight: bold;
-    color: rebeccapurple;
-  }
+  @import '../scss/style'
 </style>
