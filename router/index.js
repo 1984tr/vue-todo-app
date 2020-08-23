@@ -8,16 +8,26 @@ Vue.use(VueRouter)
 
 const routes = [
     {
+        name: 'index',
         path: '/',
         component: Home
     },
     {
+        name: 'about',
         path: '/about',
         component: About
     },
     {
+        name: 'todos',
         path: '/todos',
-        component: TodoApp
+        redirect: '/todos/all',
+        component: TodoApp,
+        children: [
+            {
+                name: 'todos-filter',
+                path: ':id'
+            }
+        ]
     }
 ]
 
