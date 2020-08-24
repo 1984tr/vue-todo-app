@@ -61,14 +61,7 @@
 </template>
 
 <script>
-import lowdb from 'lowdb'
-import LocalStorage from 'lowdb/adapters/LocalStorage'
-import cryptoRandomString from 'crypto-random-string'
-import _cloneDeep from 'lodash/cloneDeep'
-import _find from 'lodash/find'
-import _assign from 'lodash/assign'
-import _findIndex from 'lodash/findIndex'
-import _forEachRight from 'lodash/forEachRight'
+
 import scrollTo from 'scroll-to'
 import TodoCreator from '~/components/TodoCreator'
 import TodoItem from '~/components/TodoItem'
@@ -77,12 +70,6 @@ export default {
   components: {
     TodoCreator,
     TodoItem
-  },
-  data () {
-    return {
-      db: null,
-      todos: []
-    }
   },
   computed: {
     filteredTodos () {
@@ -95,15 +82,6 @@ export default {
         case 'completed':
           return this.todos.filter(todo => todo.done)
       }
-    },
-    total () {
-      return this.todos.length
-    },
-    activeCount () {
-      return this.todos.filter(todo => !todo.done).length
-    },
-    completedCount () {
-      return this.total - this.activeCount
     },
     allDone: {
       get () {
@@ -118,88 +96,7 @@ export default {
     this.initDB()
   },
   methods: {
-    initDB () {
-      const adapter = new LocalStorage('todo-app') // DB Name
-      this.db = lowdb(adapter)
 
-      const hasTodos = this.db.has('todos').value()
-      if (hasTodos) {
-        this.readTodos()
-      } else {
-        // Local DB 초기화
-        this.db
-          .defaults({
-            todos: [] // Collection
-          })
-          .write()
-      }
-    },
-    createTodo (title) {
-      const newTodo = {
-        id: cryptoRandomString({ length: 10 }),
-        title: title,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        done: false
-      }
-
-      this.db
-        .get('todos')
-        .push(newTodo)
-        .write()
-
-      this.todos.push(newTodo)
-    },
-    readTodos () {
-      this.todos = _cloneDeep(this.db.getState().todos)
-    },
-    updateTodo (todo, value) {
-      this.db
-        .get('todos')
-        .find({ id: todo.id })
-        .assign(value)
-        .write()
-
-      const foundTodo = _find(this.todos, { id: todo.id })
-      _assign(foundTodo, value)
-    },
-    deleteTodo (todo) {
-      this.db
-        .get('todos')
-        .remove({ id: todo.id })
-        .write()
-
-      const foundIndex = _findIndex(this.todos, { id: todo.id })
-      this.$delete(this.todos, foundIndex)
-    },
-    completeAll (checked) {
-      const newTodos = this.db
-        .get('todos')
-        .forEach(todo => {
-          todo.done = checked
-        })
-        .write()
-
-      this.todos = _cloneDeep(newTodos)
-    },
-    clearCompleted () {
-      // this.todos
-      //   .reduce((list, todo, index) => {
-      //     if (todo.done) {
-      //       list.push(index)
-      //     }
-      //     return list
-      //   }, [])
-      //   .reverse()
-      //   .forEach(index => {
-      //     this.deleteTodo(this.todos[index])
-      //   })
-      _forEachRight(this.todos, todo => {
-        if (todo.done) {
-          this.deleteTodo(todo)
-        }
-      })
-    },
     scrollToTop () {
       scrollTo(0, 0, {
         ease: 'linear',
