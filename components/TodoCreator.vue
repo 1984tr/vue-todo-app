@@ -8,8 +8,7 @@
       :placeholder="placeholder"
       type="text"
       @input="title = $event.target.value"
-      @keypress.enter="createTodo"
-    />
+      @keypress.enter="createTodo">
   </div>
 </template>
 

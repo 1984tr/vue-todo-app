@@ -23,7 +23,7 @@
           <label>
             <input
               v-model="allDone"
-              type="checkbox" />
+              type="checkbox">
             <span class="icon"><i class="material-icons">done_all</i></span>
           </label>
         </div>
@@ -47,17 +47,16 @@
       </div>
     </div>
     <div class="todo-app__list">
-      <todo-item
+      <TodoItem
         v-for="todo in filteredTodos"
         :key="todo.id"
         :todo="todo"
         @update-todo="updateTodo"
-        @delete-todo="deleteTodo"
-      />
+        @delete-todo="deleteTodo" />
     </div>
-    <todo-creator
+    <TodoCreator
       class="todo-app__creator"
-      @create-todo="createTodo"/>
+      @create-todo="createTodo" />
   </div>
 </template>
 
@@ -218,7 +217,7 @@ export default {
 </script>
 
 <style lang="scss">
-  
+
   @import 'scss/style';
 
   .filters button.router-link-active {

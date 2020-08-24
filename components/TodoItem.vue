@@ -12,18 +12,17 @@
         type="text"
         @input="editedTitle = $event.target.value"
         @keypress.enter="editedTodo"
-        @keypress.esc="offEditMode"
-      />
+        @keypress.esc="offEditMode">
       <div class="item__actions">
         <button
-          class="btn btn--primary"
           key="complete"
+          class="btn btn--primary"
           @click="editedTodo">
           <i class="material-icons">done</i>
         </button>
         <button
-          class="btn"
           key="cancel"
+          class="btn"
           @click="offEditMode">
           <i class="material-icons">clear</i>
         </button>
@@ -35,8 +34,7 @@
       <label>
         <input
           v-model="done"
-          type="checkbox"
-        />
+          type="checkbox">
         <span class="icon"><i class="material-icons">check</i></span>
       </label>
       <div class="item__title-wrap">
@@ -49,14 +47,14 @@
       </div>
       <div class="item__actions">
         <button
-          class="btn"
           key="update"
+          class="btn"
           @click="onEditMode">
           <i class="material-icons">edit</i>
         </button>
         <button
-          class="btn btn--danger"
           key="delete"
+          class="btn btn--danger"
           @click="deleteTodo">
           <i class="material-icons">delete</i>
         </button>

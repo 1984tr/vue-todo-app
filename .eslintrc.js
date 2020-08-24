@@ -1,38 +1,37 @@
 module.exports = {
   root: true,
-  parserOptions: {
-    parser: "babel-eslint",
-    ecmaVersion: 2015,
-    sourceType: "module",
-  },
   env: {
     browser: true,
-    node: true,
+    node: true
+  },
+  parserOptions: {
+    parser : 'babel-eslint'
   },
   extends: [
-    // https://github.com/standard/eslint-config-standard
-    "standard",
-    // https://eslint.vuejs.org/rules/
-    // 'plugin:vue/base'
-    "plugin:vue/essential",
-    // 'plugin:vue/strongly-recommended'
-    // 'plugin:vue/recommended'
+    'plugin:vue/recommended',
+    'standard'
   ],
-  plugins: ["vue"],
+  plugins: [
+    'vue'
+  ],
+  // add your custom rules here
   rules: {
-    // 예외 규칙을 추가할 수 있습니다
-    'no-new': 0,
-    "vue/html-self-closing": [
-      "error",
-      {
-        html: {
-          void: "always",
-          normal: "always",
-          component: "always",
-        },
-        svg: "always",
-        math: "always",
-      },
-    ],
-  },
-};
+    'prefer-const':'error',
+    'no-var':'error',
+    'prefer-template': 'error',
+    'vue/require-prop-types': 'off',
+    'vue/require-default-prop':'off',
+    'vue/max-attributes-per-line': ['error', {
+      'singleline': 4,
+      'multiline': {
+        'max': 4,
+        'allowFirstLine': true
+      }
+    }], 
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/multiline-html-element-content-newline': 'off',
+    'vue/html-closing-bracket-newline': ['error', {multiline: 'never'}],
+    'vue/component-name-in-template-casing':['error', 'PascalCase', { 'ignores': [] }],
+    'standard/array-bracket-even-spacing':["error", "never"]
+  }
+}
