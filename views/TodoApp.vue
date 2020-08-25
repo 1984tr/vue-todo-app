@@ -50,13 +50,10 @@
       <TodoItem
         v-for="todo in filteredTodos"
         :key="todo.id"
-        :todo="todo"
-        @update-todo="updateTodo"
-        @delete-todo="deleteTodo" />
+        :todo="todo" />
     </div>
     <TodoCreator
-      class="todo-app__creator"
-      @create-todo="createTodo" />
+      class="todo-app__creator" />
   </div>
 </template>
 
@@ -82,6 +79,18 @@ export default {
         case 'completed':
           return this.todos.filter(todo => todo.done)
       }
+    },
+    todos () {
+      return this.$store.state.todoApp.todos
+    },
+    total () {
+      return this.$store.getters.todoApp.total
+    },
+    activeCount () {
+      return this.$store.getters.todoApp.activeCount
+    },
+    completedCount () {
+      return this.$store.getters.todoApp.completedCount
     },
     allDone: {
       get () {
