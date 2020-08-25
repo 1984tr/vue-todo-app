@@ -12,7 +12,8 @@ export default {
   namespaced: true,
   state: () => ({
     db: null,
-    todos: []
+    todos: [],
+    filter: 'all'
   }),
   getters: {
     total (state) {
@@ -23,6 +24,17 @@ export default {
     },
     completedCount (_state, getters) {
       return getters.total - getters.activeCount
+    },
+    filteredTodos (state) {
+      switch (state.filter) {
+        case 'all':
+        default:
+          return state.todos
+        case 'active':
+          return state.todos.filter(todo => !todo.done)
+        case 'completed':
+          return state.todos.filter(todo => todo.done)
+      }
     }
   },
   mutations: { // 동기
@@ -51,17 +63,20 @@ export default {
     assignTodos (state, todos) {
       state.todos = todos
     },
-    assignTodo (_state, { foundTodo, value }) {
+    assignTodo (state, { foundTodo, value }) {
       _assign(foundTodo, value)
     },
     pushTodo (state, newTodo) {
-      state.todo.push(newTodo)
+      state.todos.push(newTodo)
     },
     deleteTodo (state, foundIndex) {
       Vue.delete(state.todos, foundIndex)
     },
     updateTodo (state, { todo, key, value }) {
       todo[key] = value
+    },
+    updateFilter (state, filter) {
+      state.filter = filter
     }
   },
   actions: { // 비동기
@@ -110,7 +125,7 @@ export default {
       commit('deleteTodo', foundIndex)
     },
     completeAll ({ state, commit }, checked) {
-      const newTodos = this.db
+      const newTodos = state.db
         .get('todos')
         .forEach(todo => {
           todo.done = checked
@@ -122,7 +137,7 @@ export default {
         })
         .write()
 
-      state.todos = _cloneDeep(newTodos)
+      commit('assignTodos', _cloneDeep(newTodos))
     },
     clearCompleted ({ state, dispatch }) {
       // this.todos

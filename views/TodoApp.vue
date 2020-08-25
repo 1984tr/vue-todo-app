@@ -58,7 +58,7 @@
 </template>
 
 <script>
-
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 import scrollTo from 'scroll-to'
 import TodoCreator from '~/components/TodoCreator'
 import TodoItem from '~/components/TodoItem'
@@ -69,29 +69,12 @@ export default {
     TodoItem
   },
   computed: {
-    filteredTodos () {
-      switch (this.$route.params.id) {
-        case 'all':
-        default:
-          return this.todos
-        case 'active':
-          return this.todos.filter(todo => !todo.done)
-        case 'completed':
-          return this.todos.filter(todo => todo.done)
-      }
-    },
-    todos () {
-      return this.$store.state.todoApp.todos
-    },
-    total () {
-      return this.$store.getters.todoApp.total
-    },
-    activeCount () {
-      return this.$store.getters.todoApp.activeCount
-    },
-    completedCount () {
-      return this.$store.getters.todoApp.completedCount
-    },
+    ...mapState('todoApp', [
+      'todos'
+    ]),
+    ...mapGetters('todoApp', [
+      'total', 'activeCount', 'completedCount', 'filteredTodos'
+    ]),
     allDone: {
       get () {
         return this.total === this.completedCount && this.total > 0
@@ -101,11 +84,21 @@ export default {
       }
     }
   },
+  watch: {
+    $route () {
+      this.updateFilter(this.$route.params.id)
+    }
+  },
   created () {
     this.initDB()
   },
   methods: {
-
+    ...mapActions('todoApp', [
+      'initDB', 'completeAll', 'clearCompleted'
+    ]),
+    ...mapMutations('todoApp', [
+      'updateFilter'
+    ]),
     scrollToTop () {
       scrollTo(0, 0, {
         ease: 'linear',
