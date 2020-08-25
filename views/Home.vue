@@ -2,7 +2,7 @@
   <section class="home">
     <div>
       <h1>
-        My Home Page
+        Todos
       </h1>
       <h2
         @click="$router.push('/about')">
